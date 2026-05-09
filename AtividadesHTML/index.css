@@ -1,0 +1,71 @@
+.quadrado{
+    width : 200px;
+    height: 200px;
+    background-color: green;
+    border-radius: 20px;
+    margin:30px;
+}
+
+#AtividadeUm:hover{
+    background-color: rgb(177, 236, 177);
+    border-color: rgb(165, 214, 165);
+}
+
+button{
+    padding: auto;
+    margin:10px;
+}
+
+button:hover{
+    color: green;
+    border-color: green;
+}
+
+#circulo:hover{
+    color: green;
+    border-color: green;
+    border-radius: 100px;
+}
+
+/* o que a animação vai fazer */
+@keyframes rodar{
+    from { transform: rotate(0deg) ; } /* começo */
+    to { transform: rotate(90deg) ; } /* fim */
+}
+
+/* o que faz, o tempo que dura, como é o tempo, quanto tempo é o total que vai ficar rodando */
+.animacao {
+    animation: rodar 2s linear infinite;
+}
+
+/* o que a animação vai fazer */
+@keyframes rodardif{
+    from { transform: rotate(0deg) ; } /* começo */
+    to { transform: rotate(90deg) ; } /* fim */
+}
+
+/* o que faz, o tempo que dura, como é o tempo, quanto tempo é o total que vai ficar rodando */
+.animacaoTemp {
+    animation: rodardif  2s ease infinite;
+}
+
+#botaoCrescer{
+    padding: auto;
+    margin:30px;
+}
+
+#botaoCrescer:hover{
+    color: rgb(0, 109, 128);
+    border-color: rgb(0, 81, 128);
+    transform: scale(2);
+}
+
+@keyframes centro{
+    from { transform: translateX(0%) ; border-radius: 0px; background-color: aqua;} /* começo */
+    to { transform: translateX(150%) ; border-radius: 100px; background-color: blueviolet;} /* fim */
+}
+
+/* o que faz, o tempo que dura, como é o tempo, quanto tempo é o total que vai ficar rodando */
+.animacaoCentro {
+    animation: centro 4s linear infinite;
+}
