@@ -13,7 +13,7 @@ export class jogo {
         "\n ================= turno " + turno + "===================",
       );
       player1.atacar(player2);
-      this.attImg(player1,player2);
+      this.attImg(player1, player2);
       this.atualizarInterface(player1, player2);
       player2.alterarImgSofrerAtaque();
       await this.esperaTempo();
@@ -31,7 +31,7 @@ export class jogo {
       this.atualizarInterface(player1, player2);
       player1.alterarImgSofrerAtaque();
       await this.esperaTempo();
-      
+
       player1.setImg(player1.imagemPadrao);
       player2.setImg(player2.imagemPadrao);
       this.attImg(player1, player2);
@@ -62,12 +62,12 @@ export class jogo {
     this.buscaComponenteHTML("saudeDois")!.textContent =
       "𝖍𝖕: " + jogadorDois.getVida();
 
-      
-      
-
-((this.buscaComponenteHTML("playerDoisPorcentagem")) as HTMLElement).style.width = (jogadorDois.getVida() * 100 ) / jogadorDois.vidaMax + "%";
-((this.buscaComponenteHTML("playerUmPorcentagem")) as HTMLElement).style.width = (jogadorUm.getVida() * 100 ) / jogadorUm.vidaMax + "%";
-      
+    (
+      this.buscaComponenteHTML("playerDoisPorcentagem") as HTMLElement
+    ).style.width = (jogadorDois.getVida() * 100) / jogadorDois.vidaMax + "%";
+    (
+      this.buscaComponenteHTML("playerUmPorcentagem") as HTMLElement
+    ).style.width = (jogadorUm.getVida() * 100) / jogadorUm.vidaMax + "%";
 
     this.buscaComponenteHTML("nomeUm")!.textContent = jogadorUm.nome;
     this.buscaComponenteHTML("nomeDois")!.textContent = jogadorDois.nome;
@@ -79,8 +79,8 @@ export class jogo {
 }
 
 function construirJogo() {
-  let mago: Mago = new Mago("mago", 10, 200, 15, 20);
-  let guerer: guer = new guer("guerreiro", 10, 200, 15, 20);
+  let mago: Mago = new Mago("mago", 200, 10);
+  let guerer: guer = new guer("guerreiro", 200, 10);
 
   let game: jogo = new jogo();
   game.inicial(mago, guerer);
