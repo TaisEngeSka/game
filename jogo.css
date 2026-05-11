@@ -60,8 +60,12 @@ button {
   text-align: center; /* garante que o texto fique centralizado */
 }
 
+button:hover {
+  transform: scale(1.25);
+  font-size: 50px;
+}
+
 .console {
-  /* width: 98%;*/
   background-color: black;
   align-items: center;
   color: white;
@@ -82,7 +86,6 @@ p {
 img {
   width: 200px;
   height: 300px;
-  /* object-fit: cover;*/
 }
 
 h1 {
@@ -93,8 +96,4 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-button:hover {
-  transform: scale(1.25);
-  font-size: 50px;
 }
