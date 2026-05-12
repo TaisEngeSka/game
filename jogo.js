@@ -106,8 +106,8 @@
         nome,
         vida,
         defesa,
-        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/magoPadrao.png",
-        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/magoDano.png"
+        "public/magoA1.png",
+        "./public/magoA1.png"
       );
     }
     atacar(persona) {
