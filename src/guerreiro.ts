@@ -1,5 +1,9 @@
 import { personagem } from "./personagem.ts";
-
+import guerA1 from "../public/imgs/guerA1.png";
+import guerA2 from "../public/imgs/guerA2.png";
+import guerA3 from "../public/imgs/guerA3.png";
+import guerPadrao from "../public/imgs/guerPadrao.png";
+import guerDano from "../public/imgs/guerDano.png";
 export class guer extends personagem {
   // "extends" faz com que essa classe seja filha da classe original.
   constructor(nome: string, vida: number, defesa: number) {
@@ -7,8 +11,8 @@ export class guer extends personagem {
       nome,
       vida,
       defesa,
-      "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerPadrao.png",
-      "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerDano.png",
+      guerPadrao,
+      guerDano,
     );
   }
 
@@ -20,7 +24,7 @@ export class guer extends personagem {
       this.exibirMsg(`${this.nome} ataque reto o personagem ${persona.nome}`);
       dano = 20;
       this.setImg(
-        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerA3.png",
+        guerA1,
       );
     } else if (gerarAtaque == 1) {
       this.exibirMsg(
@@ -28,7 +32,7 @@ export class guer extends personagem {
       );
       dano = 30;
       this.setImg(
-        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerA1.png",
+       guerA2,
       );
     } else {
       this.exibirMsg(
@@ -36,7 +40,7 @@ export class guer extends personagem {
       );
       dano = 40;
       this.setImg(
-        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/gueraA2.png",
+      guerA3,
       );
     }
 

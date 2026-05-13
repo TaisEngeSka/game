@@ -10,7 +10,7 @@ export class jogo {
 
     while (player1.isContinuaVivo() && player2.isContinuaVivo()) {
       player1.exibirMsg(
-        "\n ================= turno " + turno + "===================",
+        "\n =================  turno " + turno + "  ===================",
       );
       player1.atacar(player2);
       this.attImg(player1, player2);

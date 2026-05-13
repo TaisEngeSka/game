@@ -1,5 +1,9 @@
 import { personagem } from "./personagem.ts";
-
+import magoA1 from "../public/imgs/magoA1.png";
+import magoA2 from "../public/imgs/magoA2.png";
+import magoA3 from "../public/imgs/magoA3.png";
+import magoPadrao from "../public/imgs/magoPadrao.png";
+import magoDano from "../public/imgs/magoDano.png";
 export class Mago extends personagem {
   // "extends" faz com que essa classe carro seja filha da classe funcionario.
   constructor(nome: string, vida: number, defesa: number) {
@@ -7,8 +11,9 @@ export class Mago extends personagem {
       nome,
       vida,
       defesa,
-    "public/magoA1.png",
-   "./public/magoA1.png" );
+      magoPadrao,
+      magoDano,
+    );
   }
 
   public atacar(persona: personagem): void {
@@ -21,7 +26,7 @@ export class Mago extends personagem {
       );
       dano = 20;
       this.setImg(
-        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/magoA3.png",
+        magoA1,
       );
     } else if (gerarAtaque == 1) {
       this.exibirMsg(
@@ -29,7 +34,7 @@ export class Mago extends personagem {
       );
       dano = 30;
       this.setImg(
-        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/magoA1.png",
+        magoA2,
       );
     } else {
       this.exibirMsg(
@@ -37,7 +42,7 @@ export class Mago extends personagem {
       );
       dano = 40;
       this.setImg(
-        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/magoA2.png",
+       magoA3,
       );
     }
 

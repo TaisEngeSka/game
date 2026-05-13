@@ -52,6 +52,21 @@
     }
   };
 
+  // public/imgs/guerA1.png
+  var guerA1_default = "./guerA1-FRJTKGFT.png";
+
+  // public/imgs/guerA2.png
+  var guerA2_default = "./guerA2-PNPXVWDY.png";
+
+  // public/imgs/guerA3.png
+  var guerA3_default = "./guerA3-TGTEUU5T.png";
+
+  // public/imgs/guerPadrao.png
+  var guerPadrao_default = "./guerPadrao-O2QMKKRB.png";
+
+  // public/imgs/guerDano.png
+  var guerDano_default = "./guerDano-UYKBGPL7.png";
+
   // src/guerreiro.ts
   var guer = class extends personagem {
     // "extends" faz com que essa classe seja filha da classe original.
@@ -60,8 +75,8 @@
         nome,
         vida,
         defesa,
-        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerPadrao.png",
-        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerDano.png"
+        guerPadrao_default,
+        guerDano_default
       );
     }
     atacar(persona) {
@@ -71,7 +86,7 @@
         this.exibirMsg(`${this.nome} ataque reto o personagem ${persona.nome}`);
         dano = 20;
         this.setImg(
-          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerA3.png"
+          guerA1_default
         );
       } else if (gerarAtaque == 1) {
         this.exibirMsg(
@@ -79,7 +94,7 @@
         );
         dano = 30;
         this.setImg(
-          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerA1.png"
+          guerA2_default
         );
       } else {
         this.exibirMsg(
@@ -87,7 +102,7 @@
         );
         dano = 40;
         this.setImg(
-          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/gueraA2.png"
+          guerA3_default
         );
       }
       if (this.vida < 150) {
@@ -98,6 +113,21 @@
     }
   };
 
+  // public/imgs/magoA1.png
+  var magoA1_default = "./magoA1-KRZMT6DW.png";
+
+  // public/imgs/magoA2.png
+  var magoA2_default = "./magoA2-7KAMES3X.png";
+
+  // public/imgs/magoA3.png
+  var magoA3_default = "./magoA3-OXQF36WY.png";
+
+  // public/imgs/magoPadrao.png
+  var magoPadrao_default = "./magoPadrao-ELAAEEVG.png";
+
+  // public/imgs/magoDano.png
+  var magoDano_default = "./magoDano-ADCJ4XH4.png";
+
   // src/mago.ts
   var Mago = class extends personagem {
     // "extends" faz com que essa classe carro seja filha da classe funcionario.
@@ -106,8 +136,8 @@
         nome,
         vida,
         defesa,
-        "public/magoA1.png",
-        "./public/magoA1.png"
+        magoPadrao_default,
+        magoDano_default
       );
     }
     atacar(persona) {
@@ -119,7 +149,7 @@
         );
         dano = 20;
         this.setImg(
-          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/magoA3.png"
+          magoA1_default
         );
       } else if (gerarAtaque == 1) {
         this.exibirMsg(
@@ -127,7 +157,7 @@
         );
         dano = 30;
         this.setImg(
-          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/magoA1.png"
+          magoA2_default
         );
       } else {
         this.exibirMsg(
@@ -135,7 +165,7 @@
         );
         dano = 40;
         this.setImg(
-          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/magoA2.png"
+          magoA3_default
         );
       }
       persona.alterarImgSofrerAtaque();
@@ -153,7 +183,7 @@
       this.atualizarInterface(player1, player2);
       while (player1.isContinuaVivo() && player2.isContinuaVivo()) {
         player1.exibirMsg(
-          "\n ================= turno " + turno + "==================="
+          "\n =================  turno " + turno + "  ==================="
         );
         player1.atacar(player2);
         this.attImg(player1, player2);
