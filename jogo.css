@@ -76,7 +76,12 @@ button:hover {
   padding: auto;
   margin: 10px;
   overflow: auto;
+  overflow-y: auto;
 }
+
+.console::-webkit-scrollbar       { width: 5px; }
+.console::-webkit-scrollbar-track { background: transparent; }
+.console::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
 h2 {
   text-align: center;
