@@ -94,6 +94,8 @@
           dano = 40;
           this.setImg(guerA3_default);
           break;
+        default:
+          break;
       }
       persona.alterarImgSofrerAtaque();
       persona.receberDano(dano);
@@ -148,6 +150,8 @@
           );
           dano = 40;
           this.setImg(magoA3_default);
+          break;
+        default:
           break;
       }
       persona.alterarImgSofrerAtaque();
@@ -217,7 +221,6 @@
     if (document.iniciouJogo) {
       return;
     }
-    document.iniciouJogo = true;
     let mago = new Mago("mago", 200);
     let guerer = new guer("guerreiro", 200);
     let game = new jogo();

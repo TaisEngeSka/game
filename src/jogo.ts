@@ -84,9 +84,6 @@ function construirJogo() {
     return;
   }
   
- (document as any).iniciouJogo = true;
-
-
   let mago: Mago = new Mago("mago", 200);
   let guerer: guer = new guer("guerreiro", 200);
 
