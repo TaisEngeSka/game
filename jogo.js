@@ -2,17 +2,15 @@
 (() => {
   // src/personagem.ts
   var personagem = class {
-    constructor(nome, vida, defesa, imagem, imgtomouDano) {
+    constructor(nome, vida, imagem, imgtomouDano) {
       this.nome = "personagem";
       this.vida = 0;
       this.vidaMax = 0;
-      this.defesa = 0;
       this.imagem = "";
       this.imagemPadrao = "";
       this.imagemTomouDano = "";
       this.nome = nome;
       this.vida = vida;
-      this.defesa = defesa;
       this.imagem = imagem;
       this.imagemPadrao = imagem;
       this.imagemTomouDano = imgtomouDano;
@@ -70,46 +68,38 @@
   // src/guerreiro.ts
   var guer = class extends personagem {
     // "extends" faz com que essa classe seja filha da classe original.
-    constructor(nome, vida, defesa) {
-      super(
-        nome,
-        vida,
-        defesa,
-        guerPadrao_default,
-        guerDano_default
-      );
+    constructor(nome, vida) {
+      super(nome, vida, guerPadrao_default, guerDano_default);
     }
     atacar(persona) {
       let dano = 0;
       let gerarAtaque = this.gerarAtaque();
-      if (gerarAtaque == 0) {
-        this.exibirMsg(`${this.nome} ataque reto o personagem ${persona.nome}`);
-        dano = 20;
-        this.setImg(
-          guerA1_default
-        );
-      } else if (gerarAtaque == 1) {
-        this.exibirMsg(
-          `${this.nome} ataca diagonal o personagem ${persona.nome}`
-        );
-        dano = 30;
-        this.setImg(
-          guerA2_default
-        );
-      } else {
-        this.exibirMsg(
-          `${this.nome} ataque supremo o personagem ${persona.nome}`
-        );
-        dano = 40;
-        this.setImg(
-          guerA3_default
-        );
-      }
-      if (this.vida < 150) {
-        this.regenerar(10);
+      switch (gerarAtaque) {
+        case 0:
+          this.exibirMsg(`${this.nome} ataque reto o personagem ${persona.nome}`);
+          dano = 20;
+          this.setImg(guerA1_default);
+          break;
+        case 1:
+          this.exibirMsg(
+            `${this.nome} ataca diagonal o personagem ${persona.nome}`
+          );
+          dano = 30;
+          this.setImg(guerA2_default);
+          break;
+        case 2:
+          this.exibirMsg(
+            `${this.nome} ataque supremo o personagem ${persona.nome}`
+          );
+          dano = 40;
+          this.setImg(guerA3_default);
+          break;
       }
       persona.alterarImgSofrerAtaque();
       persona.receberDano(dano);
+      if (this.vida < 150) {
+        this.regenerar(10);
+      }
     }
   };
 
@@ -131,42 +121,34 @@
   // src/mago.ts
   var Mago = class extends personagem {
     // "extends" faz com que essa classe carro seja filha da classe funcionario.
-    constructor(nome, vida, defesa) {
-      super(
-        nome,
-        vida,
-        defesa,
-        magoPadrao_default,
-        magoDano_default
-      );
+    constructor(nome, vida) {
+      super(nome, vida, magoPadrao_default, magoDano_default);
     }
     atacar(persona) {
       let dano = 0;
       let gerarAtaque = this.gerarAtaque();
-      if (gerarAtaque == 0) {
-        this.exibirMsg(
-          `${this.nome} ataca com bola de fogo, o personagem ${persona.nome}`
-        );
-        dano = 20;
-        this.setImg(
-          magoA1_default
-        );
-      } else if (gerarAtaque == 1) {
-        this.exibirMsg(
-          `${this.nome} ataca com esfera o personagem ${persona.nome}`
-        );
-        dano = 30;
-        this.setImg(
-          magoA2_default
-        );
-      } else {
-        this.exibirMsg(
-          `${this.nome} ataca com criastal o personagem ${persona.nome}`
-        );
-        dano = 40;
-        this.setImg(
-          magoA3_default
-        );
+      switch (gerarAtaque) {
+        case 0:
+          this.exibirMsg(
+            `${this.nome} ataca com bola de fogo, o personagem ${persona.nome}`
+          );
+          dano = 20;
+          this.setImg(magoA1_default);
+          break;
+        case 1:
+          this.exibirMsg(
+            `${this.nome} ataca com esfera o personagem ${persona.nome}`
+          );
+          dano = 30;
+          this.setImg(magoA2_default);
+          break;
+        case 2:
+          this.exibirMsg(
+            `${this.nome} ataca com criastal o personagem ${persona.nome}`
+          );
+          dano = 40;
+          this.setImg(magoA3_default);
+          break;
       }
       persona.alterarImgSofrerAtaque();
       persona.receberDano(dano);
@@ -227,13 +209,17 @@
       this.buscaComponenteHTML("nomeUm").textContent = jogadorUm.nome;
       this.buscaComponenteHTML("nomeDois").textContent = jogadorDois.nome;
     }
-    esperaTempo() {
-      return new Promise((X) => setTimeout(X, 800));
+    esperaTempo(tempo = 800) {
+      return new Promise((X) => setTimeout(X, tempo));
     }
   };
   function construirJogo() {
-    let mago = new Mago("mago", 200, 10);
-    let guerer = new guer("guerreiro", 200, 10);
+    if (document.iniciouJogo) {
+      return;
+    }
+    document.iniciouJogo = true;
+    let mago = new Mago("mago", 200);
+    let guerer = new guer("guerreiro", 200);
     let game = new jogo();
     game.inicial(mago, guerer);
   }

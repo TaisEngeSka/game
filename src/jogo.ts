@@ -73,14 +73,22 @@ export class jogo {
     this.buscaComponenteHTML("nomeDois")!.textContent = jogadorDois.nome;
   }
 
-  public esperaTempo() {
-    return new Promise((X) => setTimeout(X, 800));
+  public esperaTempo(tempo: number = 800) {
+    return new Promise((X) => setTimeout(X, tempo));
   }
 }
 
 function construirJogo() {
-  let mago: Mago = new Mago("mago", 200, 10);
-  let guerer: guer = new guer("guerreiro", 200, 10);
+ 
+  if((document as any).iniciouJogo){
+    return;
+  }
+  
+ (document as any).iniciouJogo = true;
+
+
+  let mago: Mago = new Mago("mago", 200);
+  let guerer: guer = new guer("guerreiro", 200);
 
   let game: jogo = new jogo();
   game.inicial(mago, guerer);

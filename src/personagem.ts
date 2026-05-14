@@ -2,7 +2,6 @@ export abstract class personagem {
   public nome: string = "personagem";
   protected vida: number = 0;
   public vidaMax: number = 0;
-  protected defesa: number = 0;
   protected imagem: string = "";
   public imagemPadrao: string = "";
   protected imagemTomouDano: string = "";
@@ -10,13 +9,11 @@ export abstract class personagem {
   constructor(
     nome: string,
     vida: number,
-    defesa: number,
     imagem: string,
     imgtomouDano: string,
   ) {
     this.nome = nome;
     this.vida = vida;
-    this.defesa = defesa;
     this.imagem = imagem;
     this.imagemPadrao = imagem;
     this.imagemTomouDano = imgtomouDano;
