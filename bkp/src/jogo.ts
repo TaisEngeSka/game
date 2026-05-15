@@ -10,7 +10,7 @@ export class jogo {
 
     while (player1.isContinuaVivo() && player2.isContinuaVivo()) {
       player1.exibirMsg(
-        "\n =================  turno " + turno + "  ===================",
+        "\n ================= turno " + turno + "===================",
       );
       player1.atacar(player2);
       this.attImg(player1, player2);
@@ -73,19 +73,14 @@ export class jogo {
     this.buscaComponenteHTML("nomeDois")!.textContent = jogadorDois.nome;
   }
 
-  public esperaTempo(tempo: number = 800) {
-    return new Promise((X) => setTimeout(X, tempo));
+  public esperaTempo() {
+    return new Promise((X) => setTimeout(X, 800));
   }
 }
 
 function construirJogo() {
- 
-  if((document as any).iniciouJogo){
-    return;
-  }
-  
-  let mago: Mago = new Mago("mago", 200);
-  let guerer: guer = new guer("guerreiro", 200);
+  let mago: Mago = new Mago("mago", 200, 10);
+  let guerer: guer = new guer("guerreiro", 200, 10);
 
   let game: jogo = new jogo();
   game.inicial(mago, guerer);

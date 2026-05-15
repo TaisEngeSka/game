@@ -2,15 +2,17 @@
 (() => {
   // src/personagem.ts
   var personagem = class {
-    constructor(nome, vida, imagem, imgtomouDano) {
+    constructor(nome, vida, defesa, imagem, imgtomouDano) {
       this.nome = "personagem";
       this.vida = 0;
       this.vidaMax = 0;
+      this.defesa = 0;
       this.imagem = "";
       this.imagemPadrao = "";
       this.imagemTomouDano = "";
       this.nome = nome;
       this.vida = vida;
+      this.defesa = defesa;
       this.imagem = imagem;
       this.imagemPadrao = imagem;
       this.imagemTomouDano = imgtomouDano;
@@ -50,109 +52,91 @@
     }
   };
 
-  // public/imgs/guerA1.png
-  var guerA1_default = "./guerA1-FRJTKGFT.png";
-
-  // public/imgs/guerA2.png
-  var guerA2_default = "./guerA2-PNPXVWDY.png";
-
-  // public/imgs/guerA3.png
-  var guerA3_default = "./guerA3-TGTEUU5T.png";
-
-  // public/imgs/guerPadrao.png
-  var guerPadrao_default = "./guerPadrao-O2QMKKRB.png";
-
-  // public/imgs/guerDano.png
-  var guerDano_default = "./guerDano-UYKBGPL7.png";
-
   // src/guerreiro.ts
   var guer = class extends personagem {
     // "extends" faz com que essa classe seja filha da classe original.
-    constructor(nome, vida) {
-      super(nome, vida, guerPadrao_default, guerDano_default);
+    constructor(nome, vida, defesa) {
+      super(
+        nome,
+        vida,
+        defesa,
+        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerPadrao.png",
+        "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerDano.png"
+      );
     }
     atacar(persona) {
       let dano = 0;
       let gerarAtaque = this.gerarAtaque();
-      switch (gerarAtaque) {
-        case 0:
-          this.exibirMsg(`${this.nome} ataque reto o personagem ${persona.nome}`);
-          dano = 20;
-          this.setImg(guerA1_default);
-          break;
-        case 1:
-          this.exibirMsg(
-            `${this.nome} ataca diagonal o personagem ${persona.nome}`
-          );
-          dano = 30;
-          this.setImg(guerA2_default);
-          break;
-        case 2:
-          this.exibirMsg(
-            `${this.nome} ataque supremo o personagem ${persona.nome}`
-          );
-          dano = 40;
-          this.setImg(guerA3_default);
-          break;
-        default:
-          break;
+      if (gerarAtaque == 0) {
+        this.exibirMsg(`${this.nome} ataque reto o personagem ${persona.nome}`);
+        dano = 20;
+        this.setImg(
+          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerA3.png"
+        );
+      } else if (gerarAtaque == 1) {
+        this.exibirMsg(
+          `${this.nome} ataca diagonal o personagem ${persona.nome}`
+        );
+        dano = 30;
+        this.setImg(
+          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/guerA1.png"
+        );
+      } else {
+        this.exibirMsg(
+          `${this.nome} ataque supremo o personagem ${persona.nome}`
+        );
+        dano = 40;
+        this.setImg(
+          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/gueraA2.png"
+        );
       }
-      persona.alterarImgSofrerAtaque();
-      persona.receberDano(dano);
       if (this.vida < 150) {
         this.regenerar(10);
       }
+      persona.alterarImgSofrerAtaque();
+      persona.receberDano(dano);
     }
   };
-
-  // public/imgs/magoA1.png
-  var magoA1_default = "./magoA1-KRZMT6DW.png";
-
-  // public/imgs/magoA2.png
-  var magoA2_default = "./magoA2-7KAMES3X.png";
-
-  // public/imgs/magoA3.png
-  var magoA3_default = "./magoA3-OXQF36WY.png";
-
-  // public/imgs/magoPadrao.png
-  var magoPadrao_default = "./magoPadrao-ELAAEEVG.png";
-
-  // public/imgs/magoDano.png
-  var magoDano_default = "./magoDano-ADCJ4XH4.png";
 
   // src/mago.ts
   var Mago = class extends personagem {
     // "extends" faz com que essa classe carro seja filha da classe funcionario.
-    constructor(nome, vida) {
-      super(nome, vida, magoPadrao_default, magoDano_default);
+    constructor(nome, vida, defesa) {
+      super(
+        nome,
+        vida,
+        defesa,
+        "public/magoA1.png",
+        "./public/magoA1.png"
+      );
     }
     atacar(persona) {
       let dano = 0;
       let gerarAtaque = this.gerarAtaque();
-      switch (gerarAtaque) {
-        case 0:
-          this.exibirMsg(
-            `${this.nome} ataca com bola de fogo, o personagem ${persona.nome}`
-          );
-          dano = 20;
-          this.setImg(magoA1_default);
-          break;
-        case 1:
-          this.exibirMsg(
-            `${this.nome} ataca com esfera o personagem ${persona.nome}`
-          );
-          dano = 30;
-          this.setImg(magoA2_default);
-          break;
-        case 2:
-          this.exibirMsg(
-            `${this.nome} ataca com criastal o personagem ${persona.nome}`
-          );
-          dano = 40;
-          this.setImg(magoA3_default);
-          break;
-        default:
-          break;
+      if (gerarAtaque == 0) {
+        this.exibirMsg(
+          `${this.nome} ataca com bola de fogo, o personagem ${persona.nome}`
+        );
+        dano = 20;
+        this.setImg(
+          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/magoA3.png"
+        );
+      } else if (gerarAtaque == 1) {
+        this.exibirMsg(
+          `${this.nome} ataca com esfera o personagem ${persona.nome}`
+        );
+        dano = 30;
+        this.setImg(
+          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/magoA1.png"
+        );
+      } else {
+        this.exibirMsg(
+          `${this.nome} ataca com criastal o personagem ${persona.nome}`
+        );
+        dano = 40;
+        this.setImg(
+          "file:///C:/Users/Aluno/Desktop/Ta%C3%ADs/Desenvolvimento-SKA-2026/TYPESCRIPT/atividades.ts/game/imgs/magoA2.png"
+        );
       }
       persona.alterarImgSofrerAtaque();
       persona.receberDano(dano);
@@ -169,7 +153,7 @@
       this.atualizarInterface(player1, player2);
       while (player1.isContinuaVivo() && player2.isContinuaVivo()) {
         player1.exibirMsg(
-          "\n =================  turno " + turno + "  ==================="
+          "\n ================= turno " + turno + "==================="
         );
         player1.atacar(player2);
         this.attImg(player1, player2);
@@ -213,16 +197,13 @@
       this.buscaComponenteHTML("nomeUm").textContent = jogadorUm.nome;
       this.buscaComponenteHTML("nomeDois").textContent = jogadorDois.nome;
     }
-    esperaTempo(tempo = 800) {
-      return new Promise((X) => setTimeout(X, tempo));
+    esperaTempo() {
+      return new Promise((X) => setTimeout(X, 800));
     }
   };
   function construirJogo() {
-    if (document.iniciouJogo) {
-      return;
-    }
-    let mago = new Mago("mago", 200);
-    let guerer = new guer("guerreiro", 200);
+    let mago = new Mago("mago", 200, 10);
+    let guerer = new guer("guerreiro", 200, 10);
     let game = new jogo();
     game.inicial(mago, guerer);
   }

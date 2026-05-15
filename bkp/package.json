@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/jogo.ts --bundle --outfile=jogo.js --platform=browser --loader:.png=file",
+    "build": "esbuild src/jogo.ts --bundle --outfile=jogo.js --platform=browser",
     "watch": "esbuild src/jogo.ts --bundle --outfile=jogo.js --platform=browser --watch"
   },
   "keywords": [],
